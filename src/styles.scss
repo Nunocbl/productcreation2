@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+:root
+{
+    --color-example: #fff;
+}
+
+html,body 
+{
+    font-family: "Roboto", sans-serif;
+    // background-color: rgb(221, 253, 255);
+
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

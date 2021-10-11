@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-sm-11 offset-sm-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3 p-0">
+
+            <div class="card pl-3 pr-3">
+
+                <form #f="ngForm" (ngSubmit)="submitProduct(f.value)">
+
+                    <h1 class="text-center m-4 "><strong>New Product</strong></h1>
+
+                    <div class="row">
+                        <div class="col-3 text-center">
+                            <label class="mb-5 " for="name">Nome</label>
+                        </div>
+
+                        <div class="col-9">
+                            <input type="text" class="mb-3 form-control" id="name" name='nome' ngModel>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3 text-center ">
+                            <label class="mb-5" for="descrição">Descrição Curta</label>
+                        </div>
+                        <div class="col-9">
+                            <textarea class="form-control mb-3" name="descrição" id="descrição" cols="auto" rows="3"
+                                ngModel></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3 text-center">
+                            <label class="mb-5 mt-2 " for="descriçãoL">Descrição Longa</label>
+                        </div>
+                        <div class="col-9">
+                            <textarea class="form-control mb-3" name="descriçãoL" id="descriçãoL" cols="auto" rows="3"
+                                ngModel></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-3 text-center">
+                            <label class="mb-4 " for="fabricante">Fabricante</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" class="mb-3 form-control" id="fabricante" name='fabricante' ngModel>
+
+                        </div>
+
+                    </div>
+
+
+                    <category-selector></category-selector>
+
+
+                    <!-- {{ selectedCategory | json }} -->
+
+                    <div class="row mt-3">
+                        <div class="col-12 ">
+                            <label class="mb-3" for="">Opções de Compra:</label>
+                            <div class="w-100 mb-3">
+                                <product-option *ngFor="let option of product.options;let i = index" [value]="option"
+                                    [howmany]="product.options.length-1" (delete)="removeOption(i)"
+                                    (change)="updateOption(i,$event)"></product-option>
+                            </div>
+                        </div>
+                        <div class="col-9 offset-3 mb-3">
+                            <button type='button' class="btn btn-dark w-100" (click)="addNewComponent()">Adicionar
+                                Opção</button>
+                        </div>
+                    </div>
+
+                    <colors></colors>
+
+
+                    <br><br>
+                    <div class="float-end">
+                        <button class="btn btn-dark" type="submit">Submit</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>

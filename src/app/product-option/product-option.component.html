@@ -1,0 +1,25 @@
+<div class="row m-0">
+    <div class="col-3">
+        <label class="text-center mb-3 mt-2" for="preco">Preço</label>
+        <label *ngIf="numberOfSiblings" class="text-center mb-5 mt-2" for="preco">Variante</label>
+        <label class="text-center" for="preco">Desconto</label>
+
+    </div>
+    <div class="col-9">
+        <div>
+            <input class="form-control w-100 mb-2" type="text" placeholder="Default" name="preco" >
+            <input *ngIf="numberOfSiblings" class="form-control w-100 mb-2" type="text" placeholder="Preço para" name="name" [value]="option.name">
+            <input class="form-check-input" type="checkbox" id="priceCheckbox" name="checkbox"
+                 [(ngModel)]="isItChecked" [ngModelOptions]="{standalone: true}">
+            <label *ngIf="!isItChecked" class="form-check-label mb-2" for="priceCheckbox">Desconto?</label>
+
+        </div>
+        <div *ngIf="isItChecked">
+
+            <input class="form-control w-100 mb-2" type="number" placeholder="Desconto em percentagem" id="desconto" [value]="option.value">
+            <label for="desconto"></label>
+        </div>
+        <button *ngIf="numberOfSiblings" class="btn btn-dark" (click)="deleteMe()">-</button>
+    </div>
+
+</div>

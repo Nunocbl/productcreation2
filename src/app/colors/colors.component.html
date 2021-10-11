@@ -1,0 +1,46 @@
+
+
+<div class="row">
+    <div class="col-3">
+        <label for="colors">Cores</label>
+    </div>
+    <div class="col-9 ">
+        <input type="checkbox" name="checkbox" class="form-check-input" [(ngModel)]="enableColors"
+            [ngModelOptions]="{standalone: true}">
+        Cores diferentes?
+        <div *ngIf="enableColors ">
+            <div class="">
+                <div class="col square border-secondary bg-primary" (click)=test()>
+
+
+                </div>
+                <div class="col square border-primary bg-secondary">
+
+                </div>
+                <div class="col square border-primary bg-dark ">
+
+                </div>
+                <div class="col square border-primary bg-danger">
+
+                </div>
+                <div class="col square border-primary bg-warning">
+
+                </div>
+                <div class="col square border-primary bg-success">
+
+                </div>
+                <div class="col square border-primary bg-light border border-dark">
+
+                </div>
+
+            </div>
+
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>

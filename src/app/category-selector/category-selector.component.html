@@ -1,0 +1,72 @@
+<div>
+    <div class="row">
+        <div class="col-3 text-center">
+            <label class="mb-4 text-center" for="categoria">Categoria</label>
+
+        </div>
+        <div class="col-7">
+            <select class="form-select mb-3" aria-label="Selector de categoria" name="category"
+                [(ngModel)]="selectedCategory" (change)="addingNewSubCategory=false">
+                <option selected value="-1">Nova Categoria</option>
+                <option *ngFor="let cat of categories; let i = index" [value]="i">{{cat.label}}</option>
+            </select>
+
+
+        </div>
+        <div class="col-2 p-0" *ngIf="selectedCategory==-1">
+            <button type="button" class="btn btn-dark " (click)="addNewCategory()">Add</button>
+        </div>
+
+    </div>
+    <div class="row" *ngIf="addingNewCategory">
+        <div class="col-3 text-center">
+            <label class="" for="novacategoria">Nova Categoria</label>
+        </div>
+        <div class="col-6 text-center">
+            <input type="text" class=" mb-3 form-control" id="novacategoria" name='novacategoria'
+                [(ngModel)]="novacategoria">
+        </div>
+        <div class="col-3 p-0">
+            <button type="button" class="btn btn-dark" (click)="pushCategory(novacategoria)">Submeter</button>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-3 text-center">
+            <label class="" for="subcategoria">Sub-Categoria</label>
+
+        </div>
+        <div class="col-7">
+            <select class="form-select mb-4" aria-label="Default select " name="subcategoria"
+                [disabled]="selectedCategory < 0" [(ngModel)]="novasubcategoria" >
+                <option selected >Sub-Categoria</option>
+                <option *ngFor="let subcat of (categories[selectedCategory]?.subs || []); let slug = index"
+                    [value]="subcat.slug">{{subcat.label}}</option>
+            </select>
+
+        </div>
+
+        <div class="col-2 p-0">
+            <button [disabled]="selectedCategory< 0" type="button" class="btn btn-dark "
+             (click)="this.addingNewSubCategory=!this.addingNewSubCategory">Add</button>
+        </div>
+
+    </div>
+
+    <div class="row" *ngIf="addingNewSubCategory">
+        <div class="col-3 text-center">
+            <label class="" for="novasubcategoria">Nova Sub-Categoria</label>
+        </div>
+        <div class="col-6 text-center">
+            <input type="text" class=" mb-3 form-control" id="novasubcategoria" name='novasubcategoria'
+                [(ngModel)]="novasubcategoria">
+        </div>
+        <div class="col-3 p-0">
+            <button type="button" class="btn btn-dark" (click)="pushSubCategory()">Submeter</button>
+        </div>
+
+    </div>
+
+</div>
